@@ -3,13 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dogland Publishing - Próximamente</title>
+    <title>Dogland Publishing | Material Complementario</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    
     <style>
-        body { background-color: #FDFBF7; color: #111111; font-family: serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        h1 { font-size: 2.5rem; text-align: center; }
+        .font-serif { font-family: 'Lora', serif; }
+        .font-sans { font-family: 'Inter', sans-serif; }
+        body { background-color: #FDFBF7; color: #111111; }
+        
+        /* Ocultar por defecto los paneles de respuesta mecánicos de Brevo */
+        .sib-form-message-panel { display: none; }
+        .input--hidden { display: none; }
     </style>
 </head>
-<body>
-    <h1>Dogland Publishing.<br>El puente hacia tu perro se está construyendo.</h1>
+<body class="font-sans min-h-screen flex flex-col justify-center items-center px-4 py-12 selection:bg-neutral-200">
+
+    <div class="w-full max-w-[620px] text-center space-y-8 animate-fade-in">
+        
+        <div class="space-y-2">
+            <span class="text-[11px] tracking-[4px] font-semibold text-neutral-400 uppercase font-sans block">Dogland Publishing</span>
+            <div class="h-[1px] w-12 bg-neutral-200 mx-auto"></div>
+        </div>
+
+        <div class="space-y-3">
+            <span class="text-[12px] tracking-[2px] font-semibold text-neutral-500 uppercase font-sans block">Complemento exclusivo para lectores del eBook</span>
+            <h1 class="text-3xl md:text-4xl font-bold tracking-tight font-serif text-neutral-900 leading-tight">
+                ANSIEDAD POR SEPARACIÓN:<br>EL PROTOCOLO CERO
+            </h1>
+            <p class="text-base md:text-lg italic text-neutral-600 font-serif pt-1">
+                Descarga las herramientas interactivas oficiales listas para imprimir en tu piso.
+            </p>
+        </div>
+
+        <div class="bg-white border border-neutral-100 p-6 text-left space-y-4 rounded-none shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+            <div class="flex items-start space-x-3">
+                <span class="text-xl shrink-0">📥</span>
+                <div>
+                    <h3 class="text-sm font-semibold text-neutral-900 uppercase tracking-wide">El Test del Cuidador Cautivo</h3>
+                    <p class="text-sm text-neutral-600 mt-0.5">Audita tu nivel exacto de cortisol y desgaste mental antes de interactuar o entrenar con tu perro.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-3">
+                <span class="text-xl shrink-0">📊</span>
+                <div>
+                    <h3 class="text-sm font-semibold text-neutral-900 uppercase tracking-wide">La Bitácora de 42 Días</h3>
+                    <p class="text-sm text-neutral-600 mt-0.5">El cuaderno de campo obligatorio para registrar y medir la desensibilización sistemática en segundos y minutos reales.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="sib-form">
+            <div id="error-message" class="sib-form-message-panel bg-red-50 border border-red-200 p-4 text-left rounded-none mb-4">
+                <div class="flex items-center space-x-2 text-red-800 text-sm font-medium">
+                    <span>⚠️</span>
+                    <span class="sib-form-message-panel__inner-text">No hemos podido validar tu suscripción. Por favor, comprueba el formato e inténtalo de nuevo.</span>
+                </div>
+            </div>
+
+            <div id="success-message" class="sib-form-message-panel bg-emerald-50 border border-emerald-200 p-5 text-center rounded-none mb-4">
+                <div class="text-emerald-900 space-y-2">
+                    <span class="text-2xl block">📥</span>
+                    <h4 class="font-bold text-base font-serif">¡Registro completado con éxito!</h4>
+                    <p class="text-sm text-emerald-700 sib-form-message-panel__inner-text">Hemos procesado tu solicitud. En menos de un minuto recibirás un correo de Dogland Publishing en tu bandeja de entrada con los enlaces de descarga listos.</p>
+                </div>
+            </div>
+        </div>
+
+        <form id="sib-form" method="POST" action="https://1e5d5530.sibforms.com/serve/MUIFAGGs5xNsHzlHSIekAkIDnrCLRUgxJk-LzHEnLKIW50H7mUtoAWjzzBwSuaDzmfT_P3HeMQj1vtfuL025qTHDbWHgMFhA8eLuzTqdtbdIkkDpXfKFdR2_YK_dkqNNC_01IOHrm1iNSSBKLRniDqaIgNjwdA1vkd79DZWR0f8xiD9M-C4UCndrAjnYaIOPAQJtz3sXJLKW3AKcrg==" data-type="subscription" class="space-y-4 text-left">
+            
+            <div class="space-y-2">
+                <label for="EMAIL" class="text-xs font-semibold uppercase tracking-wider text-neutral-700 block">Tu dirección de correo electrónico:</label>
+                <input 
+                    type="email" 
+                    id="EMAIL" 
+                    name="EMAIL" 
+                    autocomplete="off"
+                    required 
+                    data-required="true"
+                    placeholder="ejemplo@correo.com" 
+                    class="w-full px-4 py-3 bg-white border border-neutral-200 text-neutral-900 focus:outline-none focus:border-neutral-900 font-sans transition-colors placeholder:text-neutral-300 text-base rounded-none"
+                >
+            </div>
+
+            <input type="text" name="email_address_check" value="" class="input--hidden">
+            <input type="hidden" name="locale" value="es">
+
+            <button 
+                type="submit" 
+                form="sib-form"
+                class="w-full py-4 bg-[#111111] hover:bg-neutral-800 text-white font-semibold text-sm uppercase tracking-widest transition-colors cursor-pointer rounded-none block text-center"
+            >
+                Enviar materiales a mi bandeja de entrada
+            </button>
+        </form>
+
+        <p class="text-[11px] text-neutral-400 leading-relaxed max-w-[500px] mx-auto pt-2">
+            Garantía Dogland: Odiamos el correo basura tanto como tú. Tus datos están cifrados de forma segura y solo se utilizarán para hacerte llegar los materiales del libro y actualizaciones científicas sobre comportamiento canino.
+        </p>
+
+    </div>
+
+    <script>
+        window.REQUIRED_CODE_ERROR_MESSAGE = 'Elige un código de país';
+        window.LOCALE = 'es';
+        window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "La dirección de correo proporcionada no es válida. Comprueba el formato e inténtalo de nuevo.";
+        window.REQUIRED_ERROR_MESSAGE = "Este campo no puede quedarse vacío.";
+        window.GENERIC_INVALID_MESSAGE = "La información proporcionada no es válida. Inténtalo de nuevo.";
+        window.translation = {
+            common: {
+                selectedList: '{quantity} lista seleccionada',
+                selectedLists: '{quantity} listas seleccionadas',
+                selectedOption: '{quantity} seleccionado',
+                selectedOptions: '{quantity} seleccionados',
+            }
+        };
+        var AUTOHIDE = Boolean(0);
+    </script>
+    <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
+
 </body>
 </html>

@@ -16,14 +16,14 @@
         .font-sans { font-family: 'Inter', sans-serif; }
         body { background-color: #FDFBF7; color: #111111; }
         
-        /* Ocultar por defecto los paneles de respuesta mecánicos de Brevo */
-        .sib-form-message-panel { display: none; }
+        /* Control de estados de Brevo */
+        :where(.sib-form-message-panel) { display: none; }
         .input--hidden { display: none; }
     </style>
 </head>
 <body class="font-sans min-h-screen flex flex-col justify-center items-center px-4 py-12 selection:bg-neutral-200">
 
-    <div class="w-full max-w-[620px] text-center space-y-8 animate-fade-in">
+    <div class="w-full max-w-[620px] text-center space-y-8">
         
         <div class="space-y-2">
             <span class="text-[11px] tracking-[4px] font-semibold text-neutral-400 uppercase font-sans block">Dogland Publishing</span>
@@ -57,52 +57,57 @@
             </div>
         </div>
 
-        <div class="sib-form">
-            <div id="error-message" class="sib-form-message-panel bg-red-50 border border-red-200 p-4 text-left rounded-none mb-4">
-                <div class="flex items-center space-x-2 text-red-800 text-sm font-medium">
-                    <span>⚠️</span>
-                    <span class="sib-form-message-panel__inner-text">No hemos podido validar tu suscripción. Por favor, comprueba el formato e inténtalo de nuevo.</span>
+        <div class="sib-form text-left">
+            <div id="sib-form-container">
+                
+                <div id="error-message" class="sib-form-message-panel bg-red-50 border border-red-200 p-4 rounded-none mb-4">
+                    <div class="flex items-center space-x-2 text-red-800 text-sm font-medium">
+                        <span>⚠️</span>
+                        <span class="sib-form-message-panel__inner-text">No hemos podido validar tu suscripción. Inténtalo de nuevo.</span>
+                    </div>
                 </div>
-            </div>
 
-            <div id="success-message" class="sib-form-message-panel bg-emerald-50 border border-emerald-200 p-5 text-center rounded-none mb-4">
-                <div class="text-emerald-900 space-y-2">
-                    <span class="text-2xl block">📥</span>
-                    <h4 class="font-bold text-base font-serif">¡Registro completado con éxito!</h4>
-                    <p class="text-sm text-emerald-700 sib-form-message-panel__inner-text">Hemos procesado tu solicitud. En menos de un minuto recibirás un correo de Dogland Publishing en tu bandeja de entrada con los enlaces de descarga listos.</p>
+                <div id="success-message" class="sib-form-message-panel bg-emerald-50 border border-emerald-200 p-6 text-center rounded-none mb-4">
+                    <div class="text-emerald-900 space-y-2">
+                        <span class="text-2xl block">📥</span>
+                        <h4 class="font-bold text-base font-serif">¡Registro completado!</h4>
+                        <p class="text-sm text-emerald-700 sib-form-message-panel__inner-text">Tu solicitud ha sido procesada. En menos de un minuto recibirás las plantillas en tu correo corporativo.</p>
+                    </div>
                 </div>
+
+                <div id="sib-container">
+                    <form id="sib-form" method="POST" action="https://1e5d5530.sibforms.com/serve/MUIFAGGs5xNsHzlHSIekAkIDnrCLRUgxJk-LzHEnLKIW50H7mUtoAWjzzBwSuaDzmfT_P3HeMQj1vtfuL025qTHDbWHgMFhA8eLuzTqdtbdIkkDpXfKFdR2_YK_dkqNNC_01IOHrm1iNSSBKLRniDqaIgNjwdA1vkd79DZWR0f8xiD9M-C4UCndrAjnYaIOPAQJtz3sXJLKW3AKcrg==" data-type="subscription" class="space-y-4">
+                        
+                        <div class="space-y-2">
+                            <label for="EMAIL" class="text-xs font-semibold uppercase tracking-wider text-neutral-700 block">Tu dirección de correo electrónico:</label>
+                            <input 
+                                type="email" 
+                                id="EMAIL" 
+                                name="EMAIL" 
+                                autocomplete="off"
+                                required 
+                                data-required="true"
+                                placeholder="ejemplo@correo.com" 
+                                class="w-full px-4 py-3 bg-white border border-neutral-200 text-neutral-900 focus:outline-none focus:border-neutral-900 font-sans transition-colors placeholder:text-neutral-300 text-base rounded-none"
+                            >
+                        </div>
+
+                        <input type="text" name="email_address_check" value="" class="input--hidden">
+                        <input type="hidden" name="locale" value="es">
+
+                        <button 
+                            type="submit" 
+                            class="w-full py-4 bg-[#111111] hover:bg-neutral-800 text-white font-semibold text-sm uppercase tracking-widest transition-colors cursor-pointer rounded-none block text-center"
+                        >
+                            Enviar materiales a mi bandeja de entrada
+                        </button>
+                    </form>
+                </div>
+
             </div>
         </div>
 
-        <form id="sib-form" method="POST" action="https://1e5d5530.sibforms.com/serve/MUIFAGGs5xNsHzlHSIekAkIDnrCLRUgxJk-LzHEnLKIW50H7mUtoAWjzzBwSuaDzmfT_P3HeMQj1vtfuL025qTHDbWHgMFhA8eLuzTqdtbdIkkDpXfKFdR2_YK_dkqNNC_01IOHrm1iNSSBKLRniDqaIgNjwdA1vkd79DZWR0f8xiD9M-C4UCndrAjnYaIOPAQJtz3sXJLKW3AKcrg==" data-type="subscription" class="space-y-4 text-left">
-            
-            <div class="space-y-2">
-                <label for="EMAIL" class="text-xs font-semibold uppercase tracking-wider text-neutral-700 block">Tu dirección de correo electrónico:</label>
-                <input 
-                    type="email" 
-                    id="EMAIL" 
-                    name="EMAIL" 
-                    autocomplete="off"
-                    required 
-                    data-required="true"
-                    placeholder="ejemplo@correo.com" 
-                    class="w-full px-4 py-3 bg-white border border-neutral-200 text-neutral-900 focus:outline-none focus:border-neutral-900 font-sans transition-colors placeholder:text-neutral-300 text-base rounded-none"
-                >
-            </div>
-
-            <input type="text" name="email_address_check" value="" class="input--hidden">
-            <input type="hidden" name="locale" value="es">
-
-            <button 
-                type="submit" 
-                form="sib-form"
-                class="w-full py-4 bg-[#111111] hover:bg-neutral-800 text-white font-semibold text-sm uppercase tracking-widest transition-colors cursor-pointer rounded-none block text-center"
-            >
-                Enviar materiales a mi bandeja de entrada
-            </button>
-        </form>
-
-        <p class="text-[11px] text-neutral-400 leading-relaxed max-w-[500px] mx-auto pt-2">
+        <p class="text-[11px] text-neutral-400 leading-relaxed max-w-[500px] mx-auto pt-2 text-center">
             Garantía Dogland: Odiamos el correo basura tanto como tú. Tus datos están cifrados de forma segura y solo se utilizarán para hacerte llegar los materiales del libro y actualizaciones científicas sobre comportamiento canino.
         </p>
 
@@ -111,7 +116,7 @@
     <script>
         window.REQUIRED_CODE_ERROR_MESSAGE = 'Elige un código de país';
         window.LOCALE = 'es';
-        window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "La dirección de correo proporcionada no es válida. Comprueba el formato e inténtalo de nuevo.";
+        window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "La información proporcionada no es válida. Comprueba el formato e inténtalo de nuevo.";
         window.REQUIRED_ERROR_MESSAGE = "Este campo no puede quedarse vacío.";
         window.GENERIC_INVALID_MESSAGE = "La información proporcionada no es válida. Inténtalo de nuevo.";
         window.translation = {
@@ -123,6 +128,11 @@
             }
         };
         var AUTOHIDE = Boolean(0);
+    </script>
+    <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
+
+</body>
+</html>
     </script>
     <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
 
